@@ -23,7 +23,7 @@ const Category = () => {
     ]);
     const [selectedBrand, setSelectedBrands] = useState('All Brands');
     const [priceRange, setPriceRange] = useState({ minPrice: '0', maxPrice: '2000' });
-    const [showButton, setShowButton] = useState([]);
+    // const [showButton, setShowButton] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
 
     const categories = [
@@ -47,14 +47,14 @@ const Category = () => {
         setSelectedBrands(brand);
     };
 
-    const clickToShowLabel = (id) => {
-        if (showButton.includes(id)) {
-            const singleShowButton = showButton.filter((item) => item.id !== id);
-            setShowButton(singleShowButton);
-        } else {
-            setShowButton([showButton, id]);
-        }
-    }
+    // const clickToShowLabel = (id) => {
+    //     if (showButton.includes(id)) {
+    //         const singleShowButton = showButton.filter((item) => item.id !== id);
+    //         setShowButton(singleShowButton);
+    //     } else {
+    //         setShowButton([showButton, id]);
+    //     }
+    // }
 
     const handlePriceRange = (e) => {
         let value = parseInt(e.target.value);
@@ -101,7 +101,7 @@ const Category = () => {
                                 </label>
                             </div>
                             {otherBrand.map((checkbox, id) => (
-                                <div className="form-check text-start" onClick={() => clickToShowLabel(checkbox.id)} key={id}>
+                                <div className="form-check text-start" key={id}>
                                     <input
                                         className="form-check-input"
                                         type="checkbox"
@@ -137,7 +137,7 @@ const Category = () => {
                         </div>
                     </div>
                     <div className="col-md-9 themed-grid-col">
-                        {showButton.map((id) => {
+                        {/* {showButton.map((id) => {
                             const findData = otherBrand.find((item) => item.id === id);
                             if (!findData) {
                                 return null;
@@ -147,12 +147,11 @@ const Category = () => {
                                     <span className="px-1">{findData.brand}</span>
                                 </span>
                             )
-                        })}
+                        })} */}
                         <div className="row row-cols-1 row-cols-md-3 g-4">
                             <ProductCards
                                 combineData={combineData}
                                 Loader={Loader}
-                                showButton={showButton}
                             />
                         </div>
                     </div>
